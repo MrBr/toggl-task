@@ -1,0 +1,21 @@
+.files {
+    background: #fff;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.files .file {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.files .file:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.files .file__remove {
+    float: right;
+}
