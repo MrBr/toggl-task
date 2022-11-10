@@ -6,3 +6,7 @@ body {
   width: 300px;
   margin: auto;
 }
+
+.app__actions {
+  margin-top: 20px;
+}
