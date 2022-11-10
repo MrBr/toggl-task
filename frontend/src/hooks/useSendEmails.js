@@ -2,6 +2,9 @@ import { useCallback, useState } from 'react';
 
 const initialState = { loading: false, error: undefined, response: null };
 
+// Configure api path, default server port can't be used in the same time as app
+const API_PATH = process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
+
 const useSendEmails = () => {
   const [apiState, setApiState] = useState(initialState);
 
@@ -15,7 +18,7 @@ const useSendEmails = () => {
       let error;
 
       try {
-        const responseDescriptor = await fetch('http://localhost:3003/api/send', {
+        const responseDescriptor = await fetch(`${API_PATH}/send`, {
           body: JSON.stringify({ emails }),
           method: 'POST',
           headers: {
