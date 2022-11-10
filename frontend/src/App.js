@@ -27,7 +27,11 @@ function App() {
   const handleFiles = (selectedFiles) => {
     const newFiles = selectedFiles.reduce(
       (res, file) => {
-        res[file.name] = file;
+        if (file.type !== 'text/plain') {
+          alert(`File ${file.name} has invalid type, upload text files only!`);
+        } else {
+          res[file.name] = file;
+        }
         return res;
       },
       { ...files }
