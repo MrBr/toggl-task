@@ -2,7 +2,7 @@ import React from 'react';
 
 import './index.css';
 
-const FileInput = ({ files, onRemove }) => {
+const Files = ({ files, onRemove, children }) => {
   const fileNames = Object.keys(files);
 
   return (
@@ -10,7 +10,7 @@ const FileInput = ({ files, onRemove }) => {
       {fileNames.length === 0 && 'No files selected'}
       {fileNames.map((fileName) => (
         <div className="file" key={fileName}>
-          {fileName}
+          {children ? children(fileName) : fileName}
           <button className="file__remove" onClick={() => onRemove(fileName)}>
             x
           </button>
@@ -20,4 +20,4 @@ const FileInput = ({ files, onRemove }) => {
   );
 };
 
-export default FileInput;
+export default Files;
