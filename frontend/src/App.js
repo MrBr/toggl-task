@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
 import { FileInput, Files } from './components';
+import { useParseEmails } from './hooks';
 
 function App() {
   const [files, setFiles] = useState({});
+  const [parsedEmails] = useParseEmails(files);
 
   const handleFiles = (selectedFiles) => {
     const newFiles = selectedFiles.reduce(
@@ -26,7 +28,12 @@ function App() {
   return (
     <div className="app">
       <FileInput onFiles={handleFiles} />
-      <Files files={files} onRemove={handleRemove} />
+      <Files files={files} onRemove={handleRemove}>
+        {(fileName) => {
+          const suffix = parsedEmails[fileName] ? parsedEmails[fileName].length : 'Parsing';
+          return `${fileName} - ${suffix}`;
+        }}
+      </Files>
     </div>
   );
 }
