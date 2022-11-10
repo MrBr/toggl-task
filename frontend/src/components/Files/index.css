@@ -2,6 +2,8 @@
     background: #fff;
     width: 100%;
     margin-top: 20px;
+    list-style: none;
+    padding: 0;
 }
 
 .files .file {
